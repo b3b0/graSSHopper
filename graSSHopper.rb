@@ -35,7 +35,7 @@ def sshsetup(servers)
         username = gets.chomp
         open('servers.meta', 'a') do |f|
             f.puts ("#{sshserver}, #{username}")
-            system("ssh-copy-id -p 27772 #{username}@#{sshserver}")
+            system("ssh-copy-id #{username}@#{sshserver}")
           end 
         end
     puts "Generate running config?"
@@ -63,7 +63,7 @@ puts `echo "---------------------" >> checker.txt`
 brain.each do |server, user|
     puts "Scanning #{server}"
     puts `echo "#{server}" >> checker.txt`
-    system("ssh -p 27772 #{user}@#{server} '( #{heart} )' >> checker.txt ")
+    system("ssh #{user}@#{server} '( #{heart} )' >> checker.txt ")
     puts `echo "______" >> checker.txt`
     puts `clear`
 end
