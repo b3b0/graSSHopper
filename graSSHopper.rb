@@ -12,13 +12,8 @@ EOF
 sleep(2)
 
 
-  # 
- #  #
-#    #
-brain = Hash[*File.read('servers.cfg').split(/[, \n]+/)]
-#    # 
- #  # 
-   #
+
+  #
  #  # 
 #    #
 heart = File.read('commands.cfg')
@@ -26,16 +21,22 @@ heart = File.read('commands.cfg')
  #  #
    #
 
-   
+brain = File.readlines('servers.cfg').map do |line|
+    k, *v = line.split(',').map(&:strip)
+    [k, v]
+end.to_h
+
 def sshsetup(servers)
     system("echo "" > servers.meta")
     system("ssh-keygen")
-    servers.each do |sshserver, username|
+    servers.each do |sshserver, username, port|
         print ("Username for #{sshserver}?")
         username = gets.chomp
+        print ("Port for #{sshserver}?")
+        port = gets.chomp
         open('servers.meta', 'a') do |f|
-            f.puts ("#{sshserver}, #{username}")
-            system("ssh-copy-id #{username}@#{sshserver}")
+            f.puts ("#{sshserver}, #{username}, #{port}")
+            system("ssh-copy-id -p #{port} #{username}@#{sshserver}")
           end 
         end
     puts "Generate running config?"
@@ -60,10 +61,12 @@ puts `echo "---------------------" >> checker.txt`
 puts `echo "Command: #{heart}" >> checker.txt`
 puts `echo "---------------------" >> checker.txt`
 
-brain.each do |server, user|
+brain.each do |server, settings|
     puts "Scanning #{server}"
     puts `echo "#{server}" >> checker.txt`
-    system("ssh #{user}@#{server} '( #{heart} )' >> checker.txt ")
+    user = settings[0]
+    port = settings[1]
+    system("ssh -p #{port} #{user}@#{server} '( #{heart} )' >> checker.txt ")
     puts `echo "______" >> checker.txt`
     puts `clear`
 end
