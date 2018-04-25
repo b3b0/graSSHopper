@@ -51,14 +51,15 @@ def sshsetup(servers)
 end
 
 puts `clear`
-
-puts <<-'EOF'
-               ┌─┐┬─┐┌─┐╔═╗╔═╗╦ ╦┌─┐┌─┐┌─┐┌─┐┬─┐
-               │ ┬├┬┘├─┤╚═╗╚═╗╠═╣│ │├─┘├─┘├┤ ├┬┘
-               └─┘┴└─┴ ┴╚═╝╚═╝╩ ╩└─┘┴  ┴  └─┘┴└─                   
-                       -----------------
-** MAKE SURE TO SETUP commands.cfg and servers.cfg BEFORE PROCEEDING **
-        ------------------------------------------------------
+puts <<-'EOF'               
+┌─┐┬─┐┌─┐╔═╗╔═╗╦ ╦┌─┐┌─┐┌─┐┌─┐┬─┐
+│ ┬├┬┘├─┤╚═╗╚═╗╠═╣│ │├─┘├─┘├┤ ├┬┘
+└─┘┴└─┴ ┴╚═╝╚═╝╩ ╩└─┘┴  ┴  └─┘┴└─  
+|----------------------------------|
+** MAKE SURE TO SETUP commands.cfg**
+** and servers.cfg BEFORE PROCEED **
+** ING, FOR YOUR OWN SAFETY   <3  **
+|----------------------------------|
 EOF
 
 sleep(2)
@@ -77,7 +78,7 @@ puts `echo "Command: #{heart}" >> checker.txt`
 puts `echo "---------------------" >> checker.txt`
 
 think()
-
+puts `clear`
 $brain.each do |server, settings|
     puts "Scanning #{server}"
     puts `echo "#{server}" >> checker.txt`
