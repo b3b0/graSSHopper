@@ -7,7 +7,7 @@ To automate administative tasks, operational auditing, and hacking.
 2. Configure your `commands.cfg` and `servers.cfg` file appropriately. 
 ### EXAMPLE COMMANDS.CFG FILE
 ```
-hostname && uptime
+df -h && uptime
 ```
 ### EXAMPLE SERVERS.CFG FILE
 ```
@@ -17,6 +17,11 @@ myawesomeserver, admin, 22
 3. Run the file with `ruby graSSHopper.rb`
 4. Run through the ssh-keygen setup
 5. You're golden ponyboy
+
+# OTHER
+- You can "install" the tool with `cd graSSHopper-master/` and ` sudo bash install.sh` then run it with `grasshopper`.
+- Plan to add quick way to change commands on the fly, just lazy.
+- Contribute, break, fix or shame the project. It's cool man.
 
 # LICENSE
 ```
