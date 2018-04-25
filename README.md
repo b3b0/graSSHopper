@@ -11,8 +11,8 @@ hostname && uptime
 ```
 ### EXAMPLE SERVERS.CFG FILE
 ```
-10.0.0.254, john
-myawesomeserver, admin
+10.0.0.254, john, 22
+myawesomeserver, admin, 22
 ```
 3. Run the file with `ruby graSSHopper.rb`
 4. Run through the ssh-keygen setup
