@@ -11,17 +11,9 @@ EOF
 
 sleep(2)
 
+heart = File.read('commands.cfg') #read the commands
 
-
-  #
- #  # 
-#    #
-heart = File.read('commands.cfg')
-#    #
- #  #
-   #
-
-brain = File.readlines('servers.cfg').map do |line|
+brain = File.readlines('servers.cfg').map do |line| #split each line in text file into a key with two values in an array
     k, *v = line.split(',').map(&:strip)
     [k, v]
 end.to_h
@@ -61,14 +53,14 @@ puts `echo "---------------------" >> checker.txt`
 puts `echo "Command: #{heart}" >> checker.txt`
 puts `echo "---------------------" >> checker.txt`
 
-brain.each do |server, settings|
-    puts "Scanning #{server}"
-    puts `echo "#{server}" >> checker.txt`
-    user = settings[0]
-    port = settings[1]
-    system("ssh -p #{port} #{user}@#{server} '( #{heart} )' >> checker.txt ")
-    puts `echo "______" >> checker.txt`
-    puts `clear`
+brain.each do |server, settings|                                              # for every key in brain, key is server, settings array is value
+    puts "Scanning #{server}"                                                 # tell us what you're scanning
+    puts `echo "#{server}" >> checker.txt`                                    # split up the checker for readability
+    user = settings[0]                                                        # first value in array is the username
+    port = settings[1]                                                        # second value in array is the port
+    system("ssh -p #{port} #{user}@#{server} '( #{heart} )' >> checker.txt ") # hamfist it together
+    puts `echo "______" >> checker.txt`                                       # split the servers apart for readability 
+    puts `clear`                                                              # make it look clean
 end
 
 puts `echo "~-~-~-~-~-~END OF THIS CHECKING SESSION~-~-~-~-~-~" >> checker.txt`
