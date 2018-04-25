@@ -1,22 +1,12 @@
-puts `clear`
-
-puts <<-'EOF'
-               ┌─┐┬─┐┌─┐╔═╗╔═╗╦ ╦┌─┐┌─┐┌─┐┌─┐┬─┐
-               │ ┬├┬┘├─┤╚═╗╚═╗╠═╣│ │├─┘├─┘├┤ ├┬┘
-               └─┘┴└─┴ ┴╚═╝╚═╝╩ ╩└─┘┴  ┴  └─┘┴└─                   
-                       -----------------
-** MAKE SURE TO SETUP commands.cfg and servers.cfg BEFORE PROCEEDING **
-        ------------------------------------------------------
-EOF
-
-sleep(2)
-
+$brain = "empty"
 heart = File.read('commands.cfg')
 
-brain = File.readlines('servers.cfg').map do |line|
-    k, *v = line.split(',').map(&:strip)
-    [k, v]
-end.to_h
+def think()
+    $brain = File.readlines('servers.cfg').map do |line|
+        k, *v = line.split(',').map(&:strip)
+        [k, v]
+    end.to_h
+end
 
 def sshsetup(servers)
     system("rm servers.meta")
@@ -60,25 +50,35 @@ def sshsetup(servers)
     sleep(2)
 end
 
+puts `clear`
+
+puts <<-'EOF'
+               ┌─┐┬─┐┌─┐╔═╗╔═╗╦ ╦┌─┐┌─┐┌─┐┌─┐┬─┐
+               │ ┬├┬┘├─┤╚═╗╚═╗╠═╣│ │├─┘├─┘├┤ ├┬┘
+               └─┘┴└─┴ ┴╚═╝╚═╝╩ ╩└─┘┴  ┴  └─┘┴└─                   
+                       -----------------
+** MAKE SURE TO SETUP commands.cfg and servers.cfg BEFORE PROCEEDING **
+        ------------------------------------------------------
+EOF
+
+sleep(2)
 print("Do you need to run the ssh-keygen setup? Requires you to have correctly configured your servers.cfg file. [y/n] ")
 sshsetup = gets.chomp
 if sshsetup == 'y'
-    sshsetup(brain)
+    think()
+    sshsetup($brain)
 elsif
     puts "Continuing without ssh key generation."
 end
-
-brain = File.readlines('servers.cfg').map do |line|
-    k, *v = line.split(',').map(&:strip)
-    [k, v]
-end.to_h
 
 puts `date >> checker.txt`
 puts `echo "---------------------" >> checker.txt`
 puts `echo "Command: #{heart}" >> checker.txt`
 puts `echo "---------------------" >> checker.txt`
 
-brain.each do |server, settings|
+think()
+
+$brain.each do |server, settings|
     puts "Scanning #{server}"
     puts `echo "#{server}" >> checker.txt`
     user = settings[0]
