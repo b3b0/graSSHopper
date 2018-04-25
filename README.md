@@ -1,3 +1,4 @@
+![alt text](https://i.imgur.com/w79Na6o.png "graSSHopper")
 # PURPOSE
 To automate administative tasks, operational auditing, and hacking.
 
