@@ -79,12 +79,15 @@ puts `echo "---------------------" >> checker.txt`
 
 think()
 puts `clear`
+puts "Command:"
+print "--------:"
+what = gets.chomp
 $brain.each do |server, settings|
-    puts "Scanning #{server}"
+    puts "Nuking #{server}"
     puts `echo "#{server}" >> checker.txt`
     user = settings[0]
     port = settings[1]
-    system("ssh -p #{port} #{user}@#{server} '( #{heart} )' >> checker.txt ")
+    system("ssh -t -p #{port} #{user}@#{server} '( #{what} )' | tee -a checker.txt ")
     puts `echo "______" >> checker.txt`
     puts `clear`
 end
