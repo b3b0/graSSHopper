@@ -1,15 +1,15 @@
 $brain = "empty"
-heart = File.read('commands.cfg')
+heart = File.read('/usr/share/grasshopper/commands.cfg')
 
 def think()
-    $brain = File.readlines('servers.cfg').map do |line|
+    $brain = File.readlines('/usr/share/grasshopper/servers.cfg').map do |line|
         k, *v = line.split(',').map(&:strip)
         [k, v]
     end.to_h
 end
 
 def sshsetup(servers)
-    system("rm servers.meta")
+    system("rm /usr/share/grasshopper/servers.meta")
     system("ssh-keygen")
     print("Generate new servers.cfg [y] or use current one [n]? ")
     choice = gets.chomp
@@ -22,7 +22,7 @@ def sshsetup(servers)
             username = gets.chomp
             print ("Port for #{sshserver}?")
             port = gets.chomp
-            open('servers.meta', 'a') do |f|
+            open('/usr/share/grasshopper/servers.meta', 'a') do |f|
                 f.puts ("#{sshserver}, #{username}, #{port}")
                 system("ssh-copy-id -p #{port} #{username}@#{sshserver}")
             end
@@ -43,7 +43,7 @@ def sshsetup(servers)
     puts "Generate running config?"
     answer = gets.chomp
     if answer == "y"
-        system("cp -f servers.meta servers.cfg")
+        system("cp -f /usr/share/grasshopper/servers.meta /usr/share/grasshopper/servers.cfg")
     end
     
     puts "Keygen process completed."
@@ -72,10 +72,10 @@ elsif
     puts "Continuing without ssh key generation."
 end
 
-puts `date >> checker.txt`
-puts `echo "---------------------" >> checker.txt`
-puts `echo "Command: #{heart}" >> checker.txt`
-puts `echo "---------------------" >> checker.txt`
+puts `date >> /usr/share/grasshopper/checker.txt`
+puts `echo "---------------------" >> /usr/share/grasshopper/checker.txt`
+puts `echo "Command: #{heart}" >> /usr/share/grasshopper/checker.txt`
+puts `echo "---------------------" >> /usr/share/grasshopper/checker.txt`
 
 think()
 puts `clear`
@@ -84,14 +84,14 @@ print "--------:"
 what = gets.chomp
 $brain.each do |server, settings|
     puts "Nuking #{server}"
-    puts `echo "#{server}" >> checker.txt`
+    puts `echo "#{server}" >> /usr/share/grasshopper/checker.txt`
     user = settings[0]
     port = settings[1]
-    system("ssh -t -p #{port} #{user}@#{server} '( #{what} )' | tee -a checker.txt ")
-    puts `echo "______" >> checker.txt`
+    system("ssh -t -p #{port} #{user}@#{server} '( #{what} )' | tee -a /usr/share/grasshopper/checker.txt ")
+    puts `echo "______" >> /usr/share/grasshopper/checker.txt`
     puts `clear`
 end
 
-puts `echo "~-~-~-~-~-~END OF THIS CHECKING SESSION~-~-~-~-~-~" >> checker.txt`
+puts `echo "~-~-~-~-~-~END OF THIS CHECKING SESSION~-~-~-~-~-~" >> /usr/share/grasshopper/checker.txt`
 
-system("cat checker.txt")
+system("cat /usr/share/grasshopper/checker.txt")
