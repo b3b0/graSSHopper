@@ -3,8 +3,9 @@
 To automate administative tasks, operational auditing, and hacking.
 
 # INSTRUCTION
-1. maintain currnet file structure - these files always need to be in the same directory.
-2. Configure your `commands.cfg` and `servers.cfg` file appropriately. 
+1. `cd graSSHopper-master`
+2. `sudo bash install.sh`
+3. Configure your `/usr/share/grasshopper/commands.cfg` and `/usr/share/grasshopperservers.cfg` files appropriately 
 ### EXAMPLE COMMANDS.CFG FILE
 ```
 df -h && uptime
@@ -14,13 +15,12 @@ df -h && uptime
 10.0.0.254, john, 22
 myawesomeserver, admin, 22
 ```
-3. Run the file with `ruby graSSHopper.rb`
-4. Run through the ssh-keygen setup
-5. You're golden ponyboy
+4. Run the program with `grasshopper` or use `grasshopper -a` for crontab. 
+5. Run through the ssh-keygen setup
+6. You're golden ponyboy
 
 # OTHER
-- You can "install" the tool with `cd graSSHopper-master/` and ` sudo bash install.sh` then run it with `grasshopper`.
-- Plan to add quick way to change commands on the fly, just lazy.
+- Plan to add quick way to edit commands.cfg and servers.cfg within the program.
 - Contribute, break, fix or shame the project. It's cool man.
 
 # LICENSE
