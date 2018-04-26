@@ -1,0 +1,12 @@
+#!/bin/bash
+if  [[ $1 = "-a" ]]; then
+    echo "Running cron..."
+    ruby /usr/share/grasshopper/graSSHopper-cron.rb
+elif  [[ $1 = "-h" ]]; then
+    echo "-h    - View this very menu"
+    echo "-a    - Automatic: intended for cron. Use /usr/share/grasshopper/commands.cfg file."
+    echo "n/a   - Setup/custom mode"
+else
+    echo "Running in normal mode..."
+    ruby /usr/share/grasshopper/graSSHopper.rb
+fi
