@@ -2,7 +2,14 @@
 # PURPOSE
 To automate administative tasks, operational auditing, and hacking.
 
-# INSTRUCTION
+# DEPENDENCIES
+- Unix-based OS
+- Ruby
+- Python
+- SSH client
+- sudo
+
+# INSTRUCTIONS
 1. `cd graSSHopper-master`
 2. `sudo bash install.sh`
 3. Configure your `/usr/share/grasshopper/commands.cfg` and `/usr/share/grasshopper/servers.cfg` files appropriately 
