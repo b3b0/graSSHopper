@@ -17,9 +17,9 @@ To automate administative tasks, operational auditing, and hacking.
 - sudo
 
 # INSTRUCTIONS
-1. `cd graSSHopper-master`
-2. `sudo bash install.sh`
-3. Configure your `/usr/share/grasshopper/commands.cfg` and `/usr/share/grasshopper/servers.cfg` files appropriately 
+1. If using source, `cd graSSHopper-master`
+2. Also if using source, `sudo bash install.sh`
+3. Configure your `/usr/share/grasshopper/commands.cfg` and `/usr/share/grasshopper/servers.cfg` files appropriately with `grasshopper -c` and `grasshopper -s`
 ### EXAMPLE COMMANDS.CFG FILE
 ```
 df -h && uptime
