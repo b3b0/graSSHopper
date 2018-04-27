@@ -39,13 +39,13 @@ def sshsetup(servers)
             system("ssh-copy-id -p #{port} #{user}@#{server}")
         end
     end
-    
-    puts "Generate running config?"
-    answer = gets.chomp
-    if answer == "y"
-        system("cp -f /usr/share/grasshopper/servers.meta /usr/share/grasshopper/servers.cfg")
+    if choice == "y"
+        puts "Generate running config?"
+        answer = gets.chomp
+        if answer == "y"
+            system("cp -f /usr/share/grasshopper/servers.meta /usr/share/grasshopper/servers.cfg")
+        end
     end
-    
     puts "Keygen process completed."
     sleep(2)
 end
