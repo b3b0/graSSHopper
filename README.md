@@ -25,7 +25,28 @@ myawesomeserver, admin, 22
 4. Run the program with `grasshopper` or use `grasshopper -a` for crontab. 
 5. Run through the ssh-keygen setup
 6. You're golden ponyboy
+# USAGE
+```
+$ grasshopper -h
 
+GRASSHOPPER                                                                                       
+
+NAME
+    grasshopper - run commands against multiple servers.
+
+SYNOPSIS
+    grasshopper [OPTION]
+
+DESCRIPTION
+    Run commands against multiple serves with user input or as a crontab job.
+
+USAGE:
+    - h: Display this menu
+    - a: automatic, runs commands in commands.cfg against servers in servers.cfg
+    - c: Edit commands.cfg
+    - s: Edit servers.cfg
+
+```
 # OTHER
 - Plan to add quick way to edit commands.cfg and servers.cfg within the program.
 - Contribute, break, fix or shame the project. It's cool man.
