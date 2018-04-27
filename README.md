@@ -23,9 +23,9 @@ df -h && uptime
 myawesomeserver, admin, 22
 ```
 4. Run the program with `grasshopper` or use `grasshopper -a` for crontab.
-4.5. Get extra help with `grasshopper -h` or `man grasshopper`
-5. Run through the ssh-keygen setup
-6. You're golden ponyboy
+5. Get extra help with `grasshopper -h` or `man grasshopper`
+7. Run through the ssh-keygen setup
+7. You're golden ponyboy
 # USAGE
 ```
 $ grasshopper -h
