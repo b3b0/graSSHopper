@@ -1,4 +1,9 @@
 ![alt text](https://i.imgur.com/w79Na6o.png "graSSHopper")
+
+# RELEASES
+Version 1:
+(https://github.com/b3b0/graSSHopper/releases/tag/v1.0)
+
 # PURPOSE
 To automate administative tasks, operational auditing, and hacking.
 
