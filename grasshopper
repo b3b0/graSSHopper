@@ -2,10 +2,29 @@
 if  [[ $1 = "-a" ]]; then
     echo "Running cron..."
     ruby /usr/share/grasshopper/graSSHopper-cron.rb
+elif  [[ $1 = "-c" ]]; then
+    vi /usr/share/grasshopper/commands.cfg
+elif  [[ $1 = "-s" ]]; then
+    vi /usr/share/grasshopper/servers.cfg
 elif  [[ $1 = "-h" ]]; then
-    echo "-h    - View this very menu"
-    echo "-a    - Automatic: intended for cron. Use /usr/share/grasshopper/commands.cfg file."
-    echo "n/a   - Setup/custom mode"
+    cat << EOF
+GRASSHOPPER                                                                                       
+
+NAME
+    grasshopper - run commands against multiple servers.
+
+SYNOPSIS
+    grasshopper [OPTION]
+
+DESCRIPTION
+    Run commands against multiple serves with user input or as a crontab job.
+
+USAGE:
+    - h: Display this menu
+    - a: automatic, runs commands in commands.cfg against servers in servers.cfg
+    - c: Edit commands.cfg
+    - s: Edit servers.cfg
+EOF
 else
     echo "Running in normal mode..."
     ruby /usr/share/grasshopper/graSSHopper.rb
