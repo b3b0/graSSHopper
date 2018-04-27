@@ -16,7 +16,6 @@ puts `echo "---------------------" >> /usr/share/grasshopper/checker.txt`
 think()
 
 $brain.each do |server, settings|
-    puts "Nuking #{server}"
     puts `echo "#{server}" >> /usr/share/grasshopper/checker.txt`
     user = settings[0]
     port = settings[1]
