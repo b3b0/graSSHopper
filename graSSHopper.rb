@@ -16,17 +16,17 @@ def sshsetup(servers)
     if choice == "y"
         creating = true
         while creating == true
-            print ("Servername?")
+            print ("Server name / IP?: ")
             sshserver = gets.chomp
-            print ("Username?")
+            print ("Your username?: ")
             username = gets.chomp
-            print ("Port for #{sshserver}?")
+            print ("Port for #{sshserver}?: ")
             port = gets.chomp
             open('/usr/share/grasshopper/servers.meta', 'a') do |f|
                 f.puts ("#{sshserver}, #{username}, #{port}")
                 system("ssh-copy-id -p #{port} #{username}@#{sshserver}")
             end
-            puts("add another server?")
+            puts("Add another server? [n/y]: ")
             addanother = gets.chomp
             if addanother != "y"
                 creating = false
@@ -40,7 +40,7 @@ def sshsetup(servers)
         end
     end
     if choice == "y"
-        puts "Generate running config?"
+        puts "Generate new config with this session's servers? Previous config will be overwritten."
         answer = gets.chomp
         if answer == "y"
             system("cp -f /usr/share/grasshopper/servers.meta /usr/share/grasshopper/servers.cfg")
@@ -63,7 +63,7 @@ puts <<-'EOF'
 EOF
 
 sleep(2)
-print("Do you need to run the ssh-keygen setup? Requires you to have correctly configured your servers.cfg file. [y/n] ")
+print("Do you need to run the ssh-keygen setup? Requires you to have correctly configured your servers.cfg file. [y/n]: ")
 sshsetup = gets.chomp
 if sshsetup == 'y'
     think()
