@@ -8,6 +8,8 @@ elif  [[ $1 = "-s" ]]; then
     vi /usr/share/grasshopper/servers.cfg
 elif  [[ $1 = "-v" ]]; then
 	echo "v.1.0-1"
+elif  [[ $1 = "-t" ]]; then
+	ruby /usr/share/grasshopper/graSSHopper-scp.rb
 elif  [[ $1 = "-h" ]]; then
     cat << EOF
 GRASSHOPPER                                                                                       
@@ -26,6 +28,7 @@ USAGE:
     - a: automatic, runs commands in commands.cfg against servers in servers.cfg
     - c: Edit commands.cfg
     - s: Edit servers.cfg
+    - t: SCP version of the tool
 EOF
 else
     echo "Running in normal mode..."
