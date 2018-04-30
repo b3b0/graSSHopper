@@ -1,10 +1,11 @@
 ![alt text](https://i.imgur.com/w79Na6o.png "graSSHopper")
 
 # RELEASES
-## VERSION 1.0
-- Debian/Ubuntu: [DEB](https://github.com/b3b0/graSSHopper/releases/download/v1.0/grasshopper-1.0.deb)
-- Fedora/RedHat: [RPM](https://github.com/b3b0/graSSHopper/releases/download/v1.0/grasshopper-1.0-noarch.rpm)
-- All other distros: [Source](https://github.com/b3b0/graSSHopper/archive/v1.0.zip)
+## VERSION 1.1
+### It's recommended that you remove previous versions of graSSHopper before installing the latest
+- Debian/Ubuntu/Mint: [DEB](https://github.com/b3b0/graSSHopper/releases/download/v1.1-1/grasshopper-1.1-1.noarch.deb)
+- Fedora/CentOS/RedHat: [RPM](https://github.com/b3b0/graSSHopper/releases/download/v1.1-1/grasshopper-1.1-1.noarch.rpm)
+- All other distros: [Source](https://github.com/b3b0/graSSHopper/archive/v1.1-1.zip)
 
 # PURPOSE
 To automate administative tasks, operational auditing, and hacking.
