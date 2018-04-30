@@ -33,7 +33,6 @@ print "--------:"
 options = gets.chomp
 $brain.each do |server, settings|
     puts "Nuking #{server}"
-    puts `echo "#{server}" >> /usr/share/grasshopper/checker.txt`
     user = settings[0]
     port = settings[1]
     if remotesrc == "y"
