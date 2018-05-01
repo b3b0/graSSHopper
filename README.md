@@ -56,6 +56,11 @@ USAGE:
     - s: Edit servers.cfg
 
 ```
+# THE FUTURE
+Planned features and improvements:
+- Multiple profiles of configurations
+- Email integration
+- Output cleanup
 # OTHER
 - Plan to add quick way to edit commands.cfg and servers.cfg within the program.
 - Contribute, break, fix or shame the project. It's cool man.
