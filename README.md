@@ -1,4 +1,4 @@
-![alt text](https://i.imgur.com/w79Na6o.png "graSSHopper")
+![alt text](https://i.imgur.com/tuNJtdC.png "graSSHopper")
 
 # RELEASES
 ## VERSION 1.1
